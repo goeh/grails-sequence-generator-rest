@@ -17,8 +17,6 @@ See [sequence-generator](https://github.com/goeh/grails-sequence-generator) plug
 
 ## Configuration
 
-    sequence.flushInterval = 300
-    
 **sequence.(name).format** (default %d)
 
 Format to use for sequence numbers. The name is the name of the sequence (simple name of the domain class).
