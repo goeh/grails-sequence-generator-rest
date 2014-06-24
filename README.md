@@ -6,7 +6,7 @@ See [sequence-generator](https://github.com/goeh/grails-sequence-generator) plug
 
 **Example**
 
-    sequenceService.initSequence('WebOrder', null, null, 100, 'WEB-%04d')
+    sequenceGeneratorService.initSequence('WebOrder', null, null, 100, 'WEB-%04d')
 
     assert sequenceGeneratorService.nextNumber('WebOrder') == 'WEB-0100'
     assert sequenceGeneratorService.nextNumber('WebOrder') == 'WEB-0101'
