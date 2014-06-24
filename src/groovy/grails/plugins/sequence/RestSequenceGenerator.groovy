@@ -41,7 +41,7 @@ class RestSequenceGenerator<T extends Number> implements SequenceGenerator<T> {
      * @return current sequence status
      */
     @Override
-    SequenceStatus createSequence(long tenant, String name, String group, String format, T start) {
+    SequenceStatus create(long tenant, String name, String group, String format, T start) {
         def client = new RESTClient("http://localhost:8082")
         client.auth.basic('admin', 'password')
         def resp = client.post(path: "/api/sequence/${tenant}/${name}",
@@ -63,7 +63,7 @@ class RestSequenceGenerator<T extends Number> implements SequenceGenerator<T> {
      * @return true if sequence was removed
      */
     @Override
-    boolean deleteSequence(long tenant, String name, String group) {
+    boolean delete(long tenant, String name, String group) {
         def client = new RESTClient("http://localhost:8082")
         client.auth.basic('admin', 'password')
         def path = "/api/sequence/${tenant}/${name}"

@@ -16,36 +16,36 @@
  */
 
 package grails.plugins.sequence
-
-import org.codehaus.groovy.grails.commons.GrailsApplication
-
 /**
  * Created by goran on 2014-06-24.
  */
 class RestSequenceTests extends GroovyTestCase {
 
-    GrailsApplication grailsApplication
+    def sequenceGenerator
 
-    void testCreateSequence() {
-        def g = new RestSequenceGenerator<Long>()
-        g.grailsApplication = grailsApplication
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp()
         try {
-            g.deleteSequence(0L, "test", null)
+            sequenceGenerator.delete(0L, "test", null)
         } catch (Exception e) {
             println e.message
         }
-        def s = g.createSequence(0L, "test", null, "%04d", 42L)
+    }
+
+    void testCreateSequence() {
+        def s = sequenceGenerator.create(0L, "test", null, "%04d", 42L)
         assertEquals "test", s.name
         assertEquals "%04d", s.format
         assertEquals "0042", s.getNumberFormatted()
 
-        s = g.status(0L, "test", null)
+        s = sequenceGenerator.status(0L, "test", null)
         assertEquals "test", s.name
         assertEquals "%04d", s.format
         assertEquals "0042", s.getNumberFormatted()
 
-        assertEquals "0042", g.nextNumber(0L, "test", null)
-        assertEquals "0043", g.nextNumber(0L, "test", null)
-        assertEquals "0044", g.nextNumber(0L, "test", null)
+        assertEquals "0042", sequenceGenerator.nextNumber(0L, "test", null)
+        assertEquals "0043", sequenceGenerator.nextNumber(0L, "test", null)
+        assertEquals "0044", sequenceGenerator.nextNumber(0L, "test", null)
     }
 }
