@@ -40,5 +40,5 @@ The starting number when a sequence is first initialized. The name is the name o
 
 ## Miscellaneous
 
-- A [prototype REST service](https://github.com/goeh/sequence-rest-service) exists that is compatible with this plugin.
+- A [prototype REST service](https://github.com/technipelago/sequence-rest-service) exists that is compatible with this plugin.
   The service is implemented with Spring Boot and the Reactor framework.
